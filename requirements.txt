@@ -1,0 +1,5 @@
+yagmail==0.11.215
+aiohttp==3.5.4
+pymongo==3.7.1
+APScheduler==3.3.1
+fake_useragent==0.1.11
