@@ -27,7 +27,7 @@ def execution_listener(event):
 
 if __name__ == '__main__':
     scheduler = AsyncIOScheduler()
-    scheduler.add_job(spider, trigger='interval', minutes=1, name='spider',
+    scheduler.add_job(spider, trigger='interval', hours=1, name='spider',
                       next_run_time=datetime.now() + timedelta(seconds=4))
     scheduler.add_listener(callback=execution_listener, mask=EVENT_JOB_EXECUTED | EVENT_JOB_ERROR)
     scheduler.start()
