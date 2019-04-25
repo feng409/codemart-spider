@@ -11,12 +11,10 @@
 # =============================================================================
 '''
 from db_tool import db_doc
-from util import send_mail, _logger
+from util import send_work_mail, _logger
 
 
 key_words = ['python', 'flask', 'django']
-
-b = True
 
 
 def find_work(doc):
@@ -28,13 +26,11 @@ def find_work(doc):
 
 
 def work_schedule():
-    global b
     unlikes = db_doc.find({'like': {'$not': {'$exists': True}}})
     _logger.info('新增了 -> %s', unlikes.count())
     for job in unlikes:
-        if find_work(job) and b:
-            b = False
-            send_mail(job['name'], job['description'])
+        if find_work(job):
+            send_work_mail(job['name'], job['description'], job['id'])
         job['like'] = True
         db_doc.update_one({'id': job['id']}, {'$set': {'like': True}})
 

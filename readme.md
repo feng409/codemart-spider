@@ -19,6 +19,8 @@
 git clone https://github.com/feng409/codemart-spider.git
 cd codemart-spider
 pip install -r requirements.txt
+cp config.py.example config.py
+vim config.py
 python run.py
 ```
 

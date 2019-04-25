@@ -13,11 +13,12 @@
 import pymongo
 from pymongo.collection import Collection
 from pymongo.database import Database
+from config import DB_URI
 
 
-client = pymongo.MongoClient('localhost', 27017)
+client = pymongo.MongoClient(DB_URI)
 db: Database = client.codemart
-db_doc: Collection = db.work1
+db_doc: Collection = db.work
 
 
 def save_documents(documents):
